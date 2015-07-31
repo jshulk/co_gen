@@ -30,3 +30,18 @@ co(function *(){
 .catch(function(){
 	console.log("failed to fetch top stories");
 });
+
+
+//co wrap
+var fn = co.wrap(function *(){
+	var result = yield getTopStoriesPromise();
+	return result;
+});
+
+fn()
+.then(function(result){
+	console.log(result.body);
+})
+.catch(function(err){
+	console.log(err);
+})
