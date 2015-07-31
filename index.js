@@ -21,7 +21,10 @@ function getTopStoriesPromise(){
 
 co(function *(){
 	var result = yield getTopStoriesPromise();
-	console.log("result");
+	return result;
+})
+.then(function(result){
+	console.log("result.body");
 	console.log(result.body);
 })
 .catch(function(){
